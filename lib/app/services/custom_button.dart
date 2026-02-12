@@ -84,7 +84,7 @@ class CustomButton extends StatelessWidget {
 
   /// Standard filled button
   const CustomButton({
-    Key? key,
+    super.key,
     this.title,
     this.icon,
     this.disabled = false,
@@ -106,12 +106,11 @@ class CustomButton extends StatelessWidget {
     this.loadingSize,
     this.boxShadow,
     this.elevation,
-  })  : style = ButtonStyle.filled,
-        super(key: key);
+  })  : style = ButtonStyle.filled;
 
   /// Outline button constructor
   const CustomButton.outline({
-    Key? key,
+    super.key,
     this.title,
     this.icon,
     this.disabled = false,
@@ -133,12 +132,11 @@ class CustomButton extends StatelessWidget {
     this.boxShadow,
     this.elevation,
   })  : style = ButtonStyle.outline,
-        linearGradient = null,
-        super(key: key);
+        linearGradient = null;
 
   /// Text button constructor
   const CustomButton.text({
-    Key? key,
+    super.key,
     this.title,
     this.icon,
     this.disabled = false,
@@ -160,12 +158,11 @@ class CustomButton extends StatelessWidget {
         linearGradient = null,
         borderWidth = 0,
         boxShadow = null,
-        elevation = null,
-        super(key: key);
+        elevation = null;
 
   /// Icon button constructor
   const CustomButton.icon({
-    Key? key,
+    super.key,
     required this.icon,
     this.disabled = false,
     this.isLoading = false,
@@ -187,8 +184,7 @@ class CustomButton extends StatelessWidget {
         leading = null,
         trailing = null,
         linearGradient = null,
-        borderWidth = 0,
-        super(key: key);
+        borderWidth = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -283,13 +279,13 @@ class CustomButton extends StatelessWidget {
                     : LinearGradient(
                         colors: [bgColor, bgColor],
                       )),
-            color: disabled ? bgColor.withOpacity(0.5) : (linearGradient == null ? bgColor : null),
+            color: disabled ? bgColor.withValues(alpha: 0.5) : (linearGradient == null ? bgColor : null),
             boxShadow: boxShadow ??
                 (disabled || elevation == 0
                     ? null
                     : [
                         BoxShadow(
-                          color: bgColor.withOpacity(0.3),
+                          color: bgColor.withValues(alpha: 0.3),
                           blurRadius: 8,
                           offset: const Offset(0, 4),
                         ),
@@ -322,7 +318,7 @@ class CustomButton extends StatelessWidget {
             color: Colors.transparent,
             borderRadius: radius,
             border: Border.all(
-              color: disabled ? borderColor.withOpacity(0.5) : borderColor,
+              color: disabled ? borderColor.withValues(alpha: 0.5) : borderColor,
               width: borderWidth,
             ),
           ),
@@ -373,7 +369,7 @@ class CustomButton extends StatelessWidget {
           height: height,
           padding: padding,
           decoration: BoxDecoration(
-            color: disabled ? bgColor.withOpacity(0.5) : bgColor,
+            color: disabled ? bgColor.withValues(alpha: 0.5) : bgColor,
             borderRadius: radius,
             boxShadow: boxShadow,
           ),

@@ -1,12 +1,6 @@
 import 'dart:convert';
 import 'package:dio/dio.dart';
-import 'package:flutter/foundation.dart';
-import 'dart:developer' as developer;
-
 import 'api_response.dart';
-import 'client.dart';
-import 'endpoints.dart';
-import 'exceptions.dart';
 import 'remote_data_source.dart';
 
 /// Advanced API Manager with singleton pattern and clean architecture

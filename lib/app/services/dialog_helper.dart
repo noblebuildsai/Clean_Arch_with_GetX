@@ -25,7 +25,7 @@ class DialogHelper {
               borderRadius: BorderRadius.circular(16.kh),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.1),
+                  color: Colors.black.withValues(alpha: 0.1),
                   blurRadius: 10,
                   spreadRadius: 2,
                 ),
@@ -66,7 +66,7 @@ class DialogHelper {
         ),
       ),
       barrierDismissible: false,
-      barrierColor: const Color(0xff141A31).withOpacity(0.5),
+      barrierColor: const Color(0xff141A31).withValues(alpha: 0.5),
       useSafeArea: true,
     );
   }

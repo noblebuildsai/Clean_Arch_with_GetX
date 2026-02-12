@@ -1,4 +1,4 @@
-import '../../../../models/user_model.dart';
+import '../models/user_model.dart';
 import '../../../../services/dio/api_response.dart';
 import '../../../../services/dio/repository.dart';
 
@@ -46,6 +46,40 @@ class HomeRepositoryImpl extends Repository implements HomeRepository {
       await clearCache('home_user_profile');
     }
     return _remoteDataSource.getUserProfile();
+  }
+
+  @override
+  Future<ApiResponse<UserModel>> createUserProfile(Map<String, dynamic> data) async {
+    final response = await _remoteDataSource.createUserProfile(data);
+    
+    if (response.success && _localDataSource != null) {
+      await clearCache('home_user_profile');
+    }
+    
+    return response;
+  }
+
+  @override
+  Future<ApiResponse<UserModel>> updateUserProfile(Map<String, dynamic> data) async {
+    final response = await _remoteDataSource.updateUserProfile(data);
+    
+    if (response.success && _localDataSource != null) {
+      await clearCache('home_user_profile');
+    }
+    
+    return response;
+  }
+
+  @override
+  Future<ApiResponse<void>> deleteUserProfile() async {
+    final response = await _remoteDataSource.deleteUserProfile();
+    
+    if (response.success && _localDataSource != null) {
+      await clearCache('home_user_profile');
+      await _localDataSource.clearUserProfileCache();
+    }
+    
+    return response;
   }
 
   @override

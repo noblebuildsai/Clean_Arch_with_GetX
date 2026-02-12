@@ -358,15 +358,12 @@ class Auth extends GetxService {
   Future<void> _handleAuthSuccess(User user) async {
     try {
       final token = await user.getIdToken(true);
-      //final firebaseUid = user.uid;
 
       final storageService = Get.find<GetStorageService>();
       storageService.setEncjwToken = token!;
-      //storageService.setFirebaseUid = firebaseUid;
 
       if (kDebugMode) {
         developer.log('Token stored successfully');
-        //debugPrint('User ID: ${storageService.getFirebaseUid}');
       }
     } catch (e) {
       if (kDebugMode) {

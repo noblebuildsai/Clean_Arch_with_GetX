@@ -102,7 +102,7 @@ class AppColors {
   
   /// Get color with opacity
   static Color withOpacity(Color color, double opacity) {
-    return color.withOpacity(opacity);
+    return color.withValues(alpha: opacity);
   }
   
   /// Get color from hex string
@@ -113,24 +113,30 @@ class AppColors {
     if (color is HexColor) {
       return color.lighter(amount);
     }
+    final r = ((color.r * 255.0).round() & 0xff);
+    final g = ((color.g * 255.0).round() & 0xff);
+    final b = ((color.b * 255.0).round() & 0xff);
     return Color.fromRGBO(
-      (color.red + (255 - color.red) * amount).round(),
-      (color.green + (255 - color.green) * amount).round(),
-      (color.blue + (255 - color.blue) * amount).round(),
-      color.opacity,
+      (r + (255 - r) * amount).round().clamp(0, 255),
+      (g + (255 - g) * amount).round().clamp(0, 255),
+      (b + (255 - b) * amount).round().clamp(0, 255),
+      color.a,
     );
   }
-  
+
   /// Get darker shade of color
   static Color darker(Color color, [double amount = 0.1]) {
     if (color is HexColor) {
       return color.darker(amount);
     }
+    final r = ((color.r * 255.0).round() & 0xff);
+    final g = ((color.g * 255.0).round() & 0xff);
+    final b = ((color.b * 255.0).round() & 0xff);
     return Color.fromRGBO(
-      (color.red * (1 - amount)).round(),
-      (color.green * (1 - amount)).round(),
-      (color.blue * (1 - amount)).round(),
-      color.opacity,
+      (r * (1 - amount)).round().clamp(0, 255),
+      (g * (1 - amount)).round().clamp(0, 255),
+      (b * (1 - amount)).round().clamp(0, 255),
+      color.a,
     );
   }
 }

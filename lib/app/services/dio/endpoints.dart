@@ -1,4 +1,6 @@
 
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 class Endpoints {
   Endpoints._();
 
@@ -14,7 +16,7 @@ class Endpoints {
   static Environment get environment => _environment;
 
 
-  static const String _baseUrlDev = "https://staging.genieorganizer.ai";
+  static final String _baseUrlDev = dotenv.env['BASE_URL']!;
   static const String _baseUrlStaging = "";
   static const String _baseUrlProduction = "";
 

@@ -4,6 +4,5 @@ abstract class Routes {
   Routes._();
   static const HOME = '/';
   static const CHAT_SCREEN = '/chat';
+  static const PROFILE = '/profile';
 }
-
-

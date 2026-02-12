@@ -13,12 +13,10 @@ class GetStorageService extends GetxService {
   }
 
   /// Get encrypted JWT token (decrypted automatically)
-  String get getEncjwToken =>
-      decryptAESCryptoJS(_runData.read('jwToken')) ?? '';
+  String get getEncjwToken => decryptAESCryptoJS(_runData.read('jwToken')) ?? '';
 
   /// Set encrypted JWT token (encrypted automatically)
-  set setEncjwToken(String val) =>
-      _runData.write('jwToken', encryptAESCryptoJS(val));
+  set setEncjwToken(String val) => _runData.write('jwToken', encryptAESCryptoJS(val));
 
   /// Logout and clear stored data
   void logout() {

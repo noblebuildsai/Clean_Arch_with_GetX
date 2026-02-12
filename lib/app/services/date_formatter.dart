@@ -89,17 +89,13 @@ class DateFormatter {
   /// Check if date is today
   static bool isToday(DateTime date) {
     final now = DateTime.now();
-    return date.year == now.year &&
-        date.month == now.month &&
-        date.day == now.day;
+    return date.year == now.year && date.month == now.month && date.day == now.day;
   }
 
   /// Check if date is yesterday
   static bool isYesterday(DateTime date) {
     final yesterday = DateTime.now().subtract(const Duration(days: 1));
-    return date.year == yesterday.year &&
-        date.month == yesterday.month &&
-        date.day == yesterday.day;
+    return date.year == yesterday.year && date.month == yesterday.month && date.day == yesterday.day;
   }
 
   /// Check if date is this week
@@ -107,8 +103,7 @@ class DateFormatter {
     final now = DateTime.now();
     final weekStart = now.subtract(Duration(days: now.weekday - 1));
     final weekEnd = weekStart.add(const Duration(days: 6));
-    return date.isAfter(weekStart.subtract(const Duration(days: 1))) &&
-        date.isBefore(weekEnd.add(const Duration(days: 1)));
+    return date.isAfter(weekStart.subtract(const Duration(days: 1))) && date.isBefore(weekEnd.add(const Duration(days: 1)));
   }
 
   /// Check if date is this month

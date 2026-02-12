@@ -39,10 +39,7 @@ class AppInterceptors extends Interceptor {
   });
 
   @override
-  FutureOr<dynamic> onRequest(
-    RequestOptions options,
-    RequestInterceptorHandler handler,
-  ) async {
+  FutureOr<dynamic> onRequest(RequestOptions options, RequestInterceptorHandler handler) async {
     // Show loading overlay if enabled
     if (isOverlayLoader) {
       DialogHelper.showLoading();
@@ -100,10 +97,7 @@ class AppInterceptors extends Interceptor {
   }
 
   @override
-  FutureOr<dynamic> onResponse(
-    Response response,
-    ResponseInterceptorHandler handler,
-  ) async {
+  FutureOr<dynamic> onResponse( Response response,ResponseInterceptorHandler handler) async {
     // Hide loading overlay
     if (isOverlayLoader) {
       DialogHelper.hideDialog();

@@ -2,6 +2,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:my_freezed_test/app/modules/home/bindings/home_binding.dart';
 import 'dart:developer' as developer;
@@ -16,6 +17,7 @@ Future<void> main() async {
 
   try {
     await initGetServices();
+    await dotenv.load(fileName: "lib/.env");
     await SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
@@ -25,8 +27,6 @@ Future<void> main() async {
       GestureDetector(
         onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
         child: GetMaterialApp(
-          // theme: AppTheme.light,
-          // darkTheme: AppTheme.dark,
           defaultTransition: Transition.fade,
           transitionDuration: const Duration(milliseconds: 300),
           smartManagement: SmartManagement.full,
